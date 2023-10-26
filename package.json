@@ -1,9 +1,9 @@
 {
-  "name": "frontend",
+  "name": "lightune",
   "version": "1.0.0",
-  "description": "An Electron application with Vue and TypeScript",
+  "description": "低仿版网易云音乐",
   "main": "./out/main/index.js",
-  "author": "example.com",
+  "author": "caleb-xu",
   "homepage": "https://www.electronjs.org",
   "scripts": {
     "format": "prettier --write .",
@@ -22,6 +22,7 @@
   "dependencies": {
     "@electron-toolkit/preload": "^2.0.0",
     "@electron-toolkit/utils": "^2.0.0",
+    "NeteaseCloudMusicApi": "^4.13.6",
     "electron-updater": "^6.1.1"
   },
   "devDependencies": {
