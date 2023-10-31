@@ -1,22 +1,15 @@
+import { ipcRenderer } from 'electron'
 import { contextBridge } from 'electron'
-import { electronAPI } from '@electron-toolkit/preload'
+import * as musicApi from 'NeteaseCloudMusicApi'
+// import { electronAPI } from '@electron-toolkit/preload'
 
-// Custom APIs for renderer
-export const api = {}
-
-// Use `contextBridge` APIs to expose Electron APIs to
-// renderer only if context isolation is enabled, otherwise
-// just add to the DOM global.
-if (process.contextIsolated) {
-    try {
-        contextBridge.exposeInMainWorld('electron', electronAPI)
-        contextBridge.exposeInMainWorld('api', api)
-    } catch (error) {
-        console.error(error)
+// contextBridge.exposeInMainWorld('electron', electronAPI)
+// 注入网易云api
+const api = {}
+for (const key in musicApi) {
+    if (typeof musicApi[key] === 'function') {
+        api[key] = (...args: unknown[]) => ipcRenderer.invoke(key, ...args)
     }
-} else {
-    // @ts-ignore (define in dts)
-    window.electron = electronAPI
-    // @ts-ignore (define in dts)
-    window.api = api
 }
+
+contextBridge.exposeInMainWorld('musicApi', api)
