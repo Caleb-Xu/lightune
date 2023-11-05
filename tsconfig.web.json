@@ -4,15 +4,19 @@
     "src/renderer/src/env.d.ts",
     "src/renderer/src/**/*",
     "src/renderer/src/**/*.vue",
-    "src/**/*.d.ts"
+    "src/constant/*"
   ],
   "compilerOptions": {
     "composite": true,
     "baseUrl": ".",
     "paths": {
+      "@constant/*": [
+        "src/constant/*"
+      ],
       "@renderer/*": [
         "src/renderer/src/*"
       ]
-    }
+    },
+    "allowImportingTsExtensions": true
   }
 }

@@ -10,7 +10,7 @@ import { ref, onBeforeMount } from 'vue'
 const result = ref()
 
 const fetchData = async () => {
-    result.value = await window.musicApi.search_hot({})
+    // result.value = await window.musicApi.search_hot({})
 }
 
 onBeforeMount(() => {

@@ -1,3 +1,4 @@
+import { InjectKey } from '@constant/index'
 import { ipcRenderer } from 'electron'
 import { contextBridge } from 'electron'
 import * as musicApi from 'NeteaseCloudMusicApi'
@@ -12,4 +13,4 @@ for (const key in musicApi) {
     }
 }
 
-contextBridge.exposeInMainWorld('musicApi', api)
+contextBridge.exposeInMainWorld(InjectKey.MusicApi, api)
